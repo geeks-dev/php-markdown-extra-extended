@@ -1,3 +1,8 @@
+This is old
+
+See [php-markdown-extra-extended-syntax](https://github.com/geeks-dev/php-markdown-extra-extended-syntax)
+
+
 # PHP Markdown Extra Extended
 
 An fork of the [PHP Markdown (Extra) project](http://michelf.com/projects/php-markdown/) (<abbr title="PHP Markdown (Extra)">PME</abbr>), extended with extra syntax, especially focused on adding support for more HTML attributes to outputted HTML, and for outputting HTML5.
