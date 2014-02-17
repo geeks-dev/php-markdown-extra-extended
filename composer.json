@@ -1,14 +1,14 @@
 {
-    "name": "egil/php-markdown-extra-extended",
+    "name": "geeks-dev/php-markdown-extra-extended-stylish",
     "type": "library",
-    "description": "PHP Markdown Extra Extended",
-    "homepage": "https://github.com/egil/php-markdown-extra-extended",
+    "description": "PHP Markdown Extra Extended Stylish",
+    "homepage": "https://github.com/geeks-dev/php-markdown-extra-extended-stylish",
     "keywords": ["markdown"],
     "license": "MIT",
     "require": {
         "php": ">=5.3"
     },
     "autoload": {
-        "files": ["markdown.php", "markdown_extended.php"]
+        "files": ["markdown.php", "markdown_extended_stylish.php"]
     }
 }

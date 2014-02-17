@@ -1,8 +1,25 @@
 $(function(){
+	SyntaxHighlighter.autoloader(
+		"bash					js/libs/syntaxhighlighter/shBrushBash.js",
+		"css					js/libs/syntaxhighlighter/shBrushCss.js",
+		"diff					js/libs/syntaxhighlighter/shBrushDiff.js",
+		"html xml xhtml			js/libs/syntaxhighlighter/shBrushXml.js",
+		"js jscript javascript	js/libs/syntaxhighlighter/shBrushJScript.js",
+		"perl pl				js/libs/syntaxhighlighter/shBrushPerl.js",
+		"php					js/libs/syntaxhighlighter/shBrushPhp.js",
+		"plain					js/libs/syntaxhighlighter/shBrushPlain.js",
+		"python py 				js/libs/syntaxhighlighter/shBrushPython.js",
+		"sql					js/libs/syntaxhighlighter/shBrushSql.js",
+		"tt tt2					js/libs/syntaxhighlighter/shBrushTT2.js",
+		"yaml yml				js/libs/syntaxhighlighter/shBrushYAML.js"
+	);
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
 	var resizeBoxes = function(){
 		var h = $(window).height() - $('header').innerHeight() - 130;		
-		$('.content-area').css('height', h + 'px');
-		$('textarea').css('height', (h - 11) + 'px');		
+		$('.content-area').css('height', (h-20) + 'px');
+		$('textarea').css('height', (h - 25) + 'px');		
 	};
 	
 	// resize boxes to fit screen
@@ -20,6 +37,7 @@ $(function(){
 		$.cookie('pmee_testdata', null);
 	});
 
+	
 	// post to server
 	$('form').submit(function(){
 		var testdata = $('textarea').val();
@@ -34,17 +52,22 @@ $(function(){
 		
 		// submit and wait for markup
 		$.ajax({
-			url: '/demo/service.php',
+			url: './service.php',
 			data: { 'markdown': testdata },
 			dataType: 'text',
 			type: 'POST',
 			success: function(res, status, xhr){
 				// update UI
+				$('#rawoutput').removeClass('prettyprinted');
 				$('#result').html(res).css('background-color', 'transparent');
 				$('#rawoutput').text(res);
 				$('#submit-count').text('#' + ($('#submit-count').data('count') + 1));				
 				$('#submit-count').data('count', $('#submit-count').data('count') + 1);
 				$('#last-submit').text(new Date().toLocaleString());
+				$("#result").find("pre").each(function() {
+					SyntaxHighlighter.highlight(SyntaxHighlighter.defaults, this);
+				});
+				
 				prettyPrint();
 				$('textarea').focus();
 				$('button[type=submit]').removeAttr('disabled');

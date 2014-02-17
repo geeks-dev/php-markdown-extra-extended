@@ -13,7 +13,7 @@ function error_function($error_level, $error_message, $error_file, $error_line, 
   die();
 }
 
-require_once('../markdown_extended.php');
+require_once('../markdown_extended_stylish.php');
 
 if(isset($_POST["markdown"]) && !empty($_POST["markdown"])){
   $markdown = $_POST["markdown"];  

@@ -1,22 +1,45 @@
-This is old
-
-See [php-markdown-extra-extended-syntax](https://github.com/geeks-dev/php-markdown-extra-extended-syntax)
+# PHP Markdown Extra Extended Stylish
 
 
-# PHP Markdown Extra Extended
+### See [Amazing Demo](http://demo.geeks-dev.com/markdown_e2_stylish/demo/)
 
-An fork of the [PHP Markdown (Extra) project](http://michelf.com/projects/php-markdown/) (<abbr title="PHP Markdown (Extra)">PME</abbr>), extended with extra syntax, especially focused on adding support for more HTML attributes to outputted HTML, and for outputting HTML5.
+
+
+### Support 
+
+- [Bootstrap glyphicons](http://getbootstrap.com/components/#glyphicons)
+- [Font Awesome](http://fontawesome.io/) & this options
+- Todo List
+- Icon List
+
+
+
+An fork of the [Markdown Extra Extended](https://github.com/egil/php-markdown-extra-extended) .
+
+### Remove
+
+- Line break generates a &lt;br /&gt;   
+
+It is because the bug has been encapsulated .
+
+### Other Message
+
+Basic part has not changed .
+I have done is an extension that matches the modern .
+
+Oh, Sorry .  
+English is not good at I .
+
+
+Down from here is Old Text
 
 ## Changes to syntax from PHP Markdown (Extra)
+
 Unless explicitly specified, existing Markdown markup works exactly as it did before. The orginal syntax is documentated here:
 
 - [Markdown syntax](http://daringfireball.net/projects/markdown/syntax)
 - [Markdown Extra syntax](http://michelf.com/projects/php-markdown/extra/)
 
-### Line break generates a `<br />`
-In <abbr title="PHP Markdown (Extra)">PME</abbr>, when you want to insert a `<br />` break tag using Markdown, you end a line with two or more spaces, then type return. This turned out to be more annoying than helpful in my projects, so now you just have to type return. This is also how Markdown works with <abbr title="GitHub Flavored Markdown">GFM</abbr>.
-
-Two returns does not insert a `<br />`, but instead creates a new paragraph as usual.
 
 ### Support for *cite* attribute on blockquotes
 It is now possible to add the optional *cite* attribute to the *blockquote* element.
