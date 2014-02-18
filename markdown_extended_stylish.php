@@ -103,7 +103,20 @@ class MarkdownExtraExtended_Parser extends MarkdownExtra_Parser {
 			if(preg_match('/^\s{'.$less_than_tab.','.$less_than_tab.'}/',$codeblock)){
 				$codeblock = preg_replace('/^\s{'.$less_than_tab.','.$less_than_tab.'}/m', "", $codeblock);
 			}
-			$cb = empty($matches[3]) ? "<pre>\n" : "<pre class=\"prettyprint linenums:$matches[3]\">\n"; 
+
+			if(empty($matches[2])){
+				$cb = "<pre>\n";
+			}else{
+				if(preg_match('/[1-9]/',$matches[2])){
+					$cb = "<pre class=\"prettyprint linenums:$matches[2]\">\n";
+				}else{
+					if(empty($matches[3])){
+						$cb = "<pre class=\"prettyprint lang-$matches[2]\">\n";
+					}else{
+						$cb = "<pre class=\"prettyprint lang-$matches[2] linenums:$matches[3]\">\n";
+					}
+				}
+			}
 			$cb .= "$codeblock</pre>";
 		}
 		return "\n\n".$this->hashBlock($cb)."\n\n";
