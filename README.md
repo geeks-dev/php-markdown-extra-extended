@@ -7,6 +7,8 @@
 
 ### Support 
 
+- Google Code Prettify
+- Syntax Highlighter
 - [Bootstrap glyphicons](http://getbootstrap.com/components/#glyphicons)
 - [Font Awesome](http://fontawesome.io/) & this options
 - Todo List
