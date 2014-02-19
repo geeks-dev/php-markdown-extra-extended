@@ -11,6 +11,7 @@
 - Syntax Highlighter
 - [Bootstrap glyphicons](http://getbootstrap.com/components/#glyphicons)
 - [Font Awesome](http://fontawesome.io/) & this options
+- Custom Icons
 - Todo List
 - Icon List
 
@@ -23,6 +24,48 @@ An fork of the [Markdown Extra Extended](https://github.com/egil/php-markdown-ex
 - Line break generates a &lt;br /&gt;   
 
 It is because the bug has been encapsulated .
+
+
+### Icons
+
+Input `:(heart):`  
+
+Output `<span class="glyphicon glyphicon-heart"></span>`  
+
+
+Input `[(heart)]`  
+
+Output `<i class="fa fa-heart"></i>`  
+
+Input `[(heart,spin,2x)]`  
+
+Output `<i class="fa fa-heart fa-spin fa-2x"></i>`  
+
+
+#### Custom Icons
+
+Input `:(custom|heart,spin,4x):`  
+
+Output `<span class="custom custom-heart fa-spin fa-4x"></span>`  
+
+Input `[(custom|heart,spin,4x)]`  
+
+Output `<i class="custom custom-heart fa-spin fa-4x"></i>`  
+
+## Usage
+You need both the *markdown.php* and the *markdown_extended_stylish.php* files, but only needs to include *markdown_extended_stylish.php*.
+
+```PHP
+require_once('markdown_extended_stylish.php');
+
+// Convert markdown formatted text in $markdown to HTML
+$html = MarkdownExtended($markdown);
+```
+
+## License
+PHP Markdown Extra Extended is licensed under the [MIT License](http://opensource.org/licenses/MIT). See the LICENSE file for details.
+
+
 
 ### Other Message
 
@@ -143,16 +186,3 @@ This example shows a *figure* with a caption added after the content:
 ![](img/reference.png)
 === [A **happy face** is good for web developers]
 ``` 
-
-## Usage
-You need both the *markdown.php* and the *markdown_extended.php* files, but only needs to include *markdown_extended.php*.
-
-```PHP
-require_once('markdown_extended.php');
-
-// Convert markdown formatted text in $markdown to HTML
-$html = MarkdownExtended($markdown);
-```
-
-## License
-PHP Markdown Extra Extended is licensed under the [MIT License](http://opensource.org/licenses/MIT). See the LICENSE file for details.
