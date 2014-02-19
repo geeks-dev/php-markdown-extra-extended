@@ -107,7 +107,7 @@ class MarkdownExtraExtended_Parser extends MarkdownExtra_Parser {
 			if(empty($matches[2])){
 				$cb = "<pre>\n";
 			}else{
-				if(preg_match('/[1-9]/',$matches[2])){
+				if(preg_match("/^[0-9]+$/",$matches[2])){
 					$cb = "<pre class=\"prettyprint linenums:$matches[2]\">\n";
 				}else{
 					if(empty($matches[3])){
@@ -385,7 +385,7 @@ class MarkdownExtraExtended_Parser extends MarkdownExtra_Parser {
 		# output <i class="fa fa-flag"></i>
 		#	:(send):
 		# output <span class="glyphicon glyphicon-send"></span>
-
+		$text = $this->runSpanGamut($text);
 		$text = preg_replace_callback('#'.$open.'\({1,6}[ ]*(.+?)[ ]*\){1,6}'.$close.'#xm',array(&$this, '_doIcons_callback_atx'), $text);
 
 		return $text;
@@ -416,19 +416,33 @@ class MarkdownExtraExtended_Parser extends MarkdownExtra_Parser {
 		}
 		$content = explode(',',$matches[1]);
 		$icon = $content[0];
+
+
+		if(strpos($icon,'|')){
+			$icons = explode('|',$icon);
+			$class = $icons[0];
+			$icon = $icons[1];
+		}
+
 		$icon = preg_replace('/(^fa-)|(^glyphicon-)/','',$icon);
 		unset($content[0]);
 		$option = '';
 		foreach ($content as $value) {
 			$option .= ' fa-'.$value;
 		}
-		$icon = $this->runSpanGamut($icon).$level.$option;
+		$icon = $icon.$level.$option;
 		switch ($matches[0][0]) {
 			case '[':
-				$block = "<i class='fa fa-".$icon."'></i>";
+				if(empty($class)){
+					$class = 'fa';
+				}
+				$block = "<i class='".$class." ".$class."-".$icon."'></i>";
 				break;
 			case ':':
-				$block = "<span class='glyphicon glyphicon-".$icon."'></span>";
+				if(empty($class)){
+					$class = 'glyphicon';
+				}
+				$block = "<span class='".$class." ".$class."-".$icon."'></span>";
 				break;
 		}
 
